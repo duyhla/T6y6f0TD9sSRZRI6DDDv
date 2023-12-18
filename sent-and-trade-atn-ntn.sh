@@ -12,31 +12,29 @@ RAWNTN=$responsentn
 RAWATN=$responseatn
 PRICENTN=`echo $RAWNTN | jq -r ".ask_price"`
 PRICEATN=`echo $RAWATN | jq -r ".ask_price"`
-AUTONITY_API_RAW=$(<"${ROOT_PATH}/.data/.autonity/autonity_api.token")
-API_TOKEN=`echo $AUTONITY_API_RAW | jq -r ".apikey"`
 
 echo Current Ask Pricing NTN: $PRICENTN
 echo Current Ask Pricing ATN: $PRICEATN
 
 sleep 5
-buyatn=`https POST https://cax.piccadilly.autonity.org/api/orders/ API-Key:$API_TOKEN pair=ATN-USD side=bid price=$PRICEATN  amount=10`
+buyatn=`https POST https://cax.piccadilly.autonity.org/api/orders/ API-Key:$KEY pair=ATN-USD side=bid price=$PRICEATN  amount=10`
 
 echo Buy ATN: $buyatn
 sleep 5
 
-buyntn=`https POST https://cax.piccadilly.autonity.org/api/orders/ API-Key:$API_TOKEN pair=NTN-USD side=bid price=$PRICENTN  amount=10`
+buyntn=`https POST https://cax.piccadilly.autonity.org/api/orders/ API-Key:$KEY pair=NTN-USD side=bid price=$PRICENTN  amount=10`
 
 echo Buy NTN: $buyntn
 
 sleep 5
 
-withdrawsatn=`https POST https://cax.piccadilly.autonity.org/api/withdraws/ API-Key:$API_TOKEN symbol=ATN amount=10`
+withdrawsatn=`https POST https://cax.piccadilly.autonity.org/api/withdraws/ API-Key:$KEY symbol=ATN amount=10`
 
 echo Withdraw ATN: $withdrawsatn
 
 sleep 5
 
-withrawsntn=`https POST https://cax.piccadilly.autonity.org/api/withdraws/ API-Key:$API_TOKEN symbol=NTN amount=10`
+withrawsntn=`https POST https://cax.piccadilly.autonity.org/api/withdraws/ API-Key:$KEY symbol=NTN amount=10`
 
 echo Withdraw NTN: $withdrawsatn
 
