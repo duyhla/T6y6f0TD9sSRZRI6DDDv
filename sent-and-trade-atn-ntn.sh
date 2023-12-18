@@ -1,7 +1,6 @@
 #!/bin/bash
 
 #KEY=$1
-ROOT_PATH=$( dirname -- "$( readlink -f -- "$0"; )"; );
 responsentn=`https GET https://cax.piccadilly.autonity.org/api/orderbooks/NTN-USD/quote API-Key:$KEY`
 responseatn=`https GET https://cax.piccadilly.autonity.org/api/orderbooks/ATN-USD/quote API-Key:$KEY`
 
